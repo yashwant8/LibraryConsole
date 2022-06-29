@@ -246,7 +246,7 @@ public class Library {
 		try {
 			 Class.forName("com.mysql.jdbc.Driver");  
 				Connection connect=DriverManager.getConnection(  
-				"jdbc:mysql://localhost:3306/liberary","root","yash3094"); 
+				"jdbc:mysql://localhost:3306/liberary","root","yashwant");
 				
 		 Statement statement = connect.createStatement();
 		 ResultSet resultSet = statement.executeQuery("select sum(fine) from student where student_id = '"+id+"'");
@@ -265,7 +265,7 @@ public class Library {
 			String str="";
 			Class.forName("com.mysql.jdbc.Driver");  
 			Connection con=DriverManager.getConnection(  
-			"jdbc:mysql://localhost:3306/liberary","root","yash3094");
+			"jdbc:mysql://localhost:3306/liberary","root","yashwant");
 			Statement stmt=con.createStatement();  
 			ResultSet resultSet=stmt.executeQuery("select book_status from book where book_id= '"+bid+"'");
 			while (resultSet.next()) {
@@ -286,7 +286,7 @@ public class Library {
 		try{  
 			Class.forName("com.mysql.jdbc.Driver");  
 			Connection con=DriverManager.getConnection(  
-			"jdbc:mysql://localhost:3306/liberary","root","yash3094");  
+			"jdbc:mysql://localhost:3306/liberary","root","yashwant");
 			Statement stmt=con.createStatement();
 			String query = " insert into book (book_id,book_name,author_name,book_status)"
 			        + " values (?, ?, ?, ?)";
@@ -304,7 +304,7 @@ public class Library {
 		try{  
 			Class.forName("com.mysql.jdbc.Driver");  
 			Connection con=DriverManager.getConnection(  
-			"jdbc:mysql://localhost:3306/liberary","root","yash3094");  
+			"jdbc:mysql://localhost:3306/liberary","root","yashwant");
 			//here sonoo is database name, root is username and password  
 			Statement stmt=con.createStatement();  
 			ResultSet rs=stmt.executeQuery("select * from book"); 
@@ -320,7 +320,7 @@ public class Library {
 		try{  
 			Class.forName("com.mysql.jdbc.Driver");  
 			Connection con=DriverManager.getConnection(  
-			"jdbc:mysql://localhost:3306/liberary","root","yash3094"); 
+			"jdbc:mysql://localhost:3306/liberary","root","yashwant");
 			Statement stmt=con.createStatement();
 			stmt.executeUpdate("delete from book where book_id = '"+id+"'");
 			System.out.println("Deleted SuccesFully!!");
@@ -331,7 +331,7 @@ public class Library {
 		try{  
 			Class.forName("com.mysql.jdbc.Driver");  
 			Connection con=DriverManager.getConnection(  
-			"jdbc:mysql://localhost:3306/liberary","root","yash3094"); 
+			"jdbc:mysql://localhost:3306/liberary","root","yashwant");
 			Statement stmt=con.createStatement();  
 			ResultSet rs=stmt.executeQuery("select book.*,student.student_id,student.issue_date,student.due_date,student.fine from book inner join student on book.book_id=student.book_id;");  
 			System.out.println("------------------------------------------------------------------------------------------------------------");
@@ -351,7 +351,7 @@ public class Library {
 		try {
 			 Class.forName("com.mysql.jdbc.Driver");  
 				Connection connect=DriverManager.getConnection(  
-				"jdbc:mysql://localhost:3306/liberary","root","yash3094"); 
+				"jdbc:mysql://localhost:3306/liberary","root","yashwant");
 				
 		 Statement statement = connect.createStatement();
 		 ResultSet resultSet = statement.executeQuery("select fine from student where book_id = '"+bid+"'");
@@ -367,7 +367,7 @@ public class Library {
 		try{  
 			Class.forName("com.mysql.jdbc.Driver");  
 			Connection con=DriverManager.getConnection(  
-			"jdbc:mysql://localhost:3306/liberary","root","yash3094");  
+			"jdbc:mysql://localhost:3306/liberary","root","yashwant");
 			Statement stmt=con.createStatement();
 			String query = " insert into student (student_id,book_id,issue_date,due_date,fine)"
 			        + " values (?, ?, ?, ?,?)";
@@ -388,7 +388,7 @@ public class Library {
 		 try {
 			 Class.forName("com.mysql.jdbc.Driver");  
 				Connection connect=DriverManager.getConnection(  
-				"jdbc:mysql://localhost:3306/liberary","root","yash3094"); 
+				"jdbc:mysql://localhost:3306/liberary","root","yashwant");
 				
 		 Statement statement = connect.createStatement();
 		 ResultSet resultSet = statement.executeQuery("select due_date from student where book_id = '"+bid+"'");
@@ -412,7 +412,7 @@ public class Library {
 			try{  
 				Class.forName("com.mysql.jdbc.Driver");  
 				Connection con=DriverManager.getConnection(  
-				"jdbc:mysql://localhost:3306/liberary","root","yash3094");  
+				"jdbc:mysql://localhost:3306/liberary","root","yashwant");
 				Statement stmt=con.createStatement();
 				stmt.executeUpdate("update student set fine = "+fine+" where book_id = '"+id+"'");
 				
@@ -424,7 +424,7 @@ public class Library {
 		try{  
 			Class.forName("com.mysql.jdbc.Driver");  
 			Connection con=DriverManager.getConnection(  
-			"jdbc:mysql://localhost:3306/liberary","root","yash3094"); 
+			"jdbc:mysql://localhost:3306/liberary","root","yashwant");
 			Statement stmt=con.createStatement();
 			String query = "select book_id from student where student_id Like '"+sid+"'";
 			ResultSet rs=stmt.executeQuery(query);
@@ -452,7 +452,7 @@ public class Library {
 		try{  
 			Class.forName("com.mysql.jdbc.Driver");  
 			Connection con=DriverManager.getConnection(  
-			"jdbc:mysql://localhost:3306/liberary","root","yash3094"); 
+			"jdbc:mysql://localhost:3306/liberary","root","yashwant");
 			Statement stmt=con.createStatement();
 			String query = "select * from book where book_id Like '"+id+"'";
 			ResultSet rs=stmt.executeQuery(query);
@@ -470,7 +470,7 @@ public class Library {
 		try{  
 			Class.forName("com.mysql.jdbc.Driver");  
 			Connection con=DriverManager.getConnection(  
-			"jdbc:mysql://localhost:3306/liberary","root","yash3094"); 
+			"jdbc:mysql://localhost:3306/liberary","root","yashwant");
 			Statement stmt=con.createStatement();
 			String query = "select * from book where book_name Like '%"+bn+"%'";
 			ResultSet rs=stmt.executeQuery(query);
@@ -488,7 +488,7 @@ public class Library {
 		try{  
 			Class.forName("com.mysql.jdbc.Driver");  
 			Connection con=DriverManager.getConnection(  
-			"jdbc:mysql://localhost:3306/liberary","root","yash3094"); 
+			"jdbc:mysql://localhost:3306/liberary","root","yashwant");
 			Statement stmt=con.createStatement();
 			String query = "select * from book where author_name Like '%"+ba+"%'";
 			ResultSet rs=stmt.executeQuery(query);
@@ -507,7 +507,7 @@ public class Library {
 		try{  
 			Class.forName("com.mysql.jdbc.Driver");  
 			Connection con=DriverManager.getConnection(  
-			"jdbc:mysql://localhost:3306/liberary","root","yash3094");  
+			"jdbc:mysql://localhost:3306/liberary","root","yashwant");
 			//here sonoo is database name, root is username and password  
 			Statement stmt=con.createStatement();  
 			ResultSet rs=stmt.executeQuery("select * from student where student_id = '"+id+"'");  
@@ -529,7 +529,7 @@ public class Library {
 		try{  
 			Class.forName("com.mysql.jdbc.Driver");  
 			Connection con=DriverManager.getConnection(  
-			"jdbc:mysql://localhost:3306/liberary","root","yash3094"); 
+			"jdbc:mysql://localhost:3306/liberary","root","yashwant");
 			Statement stmt=con.createStatement();
 			stmt.executeUpdate("delete from student where book_id = '"+bid+"'");
 			stmt.executeUpdate("update book set book_status = 'available' where book_id = '"+bid+"'");
@@ -540,7 +540,7 @@ public class Library {
 		try{  
 			Class.forName("com.mysql.jdbc.Driver");  
 			Connection con=DriverManager.getConnection(  
-			"jdbc:mysql://localhost:3306/liberary","root","yash3094"); 
+			"jdbc:mysql://localhost:3306/liberary","root","yashwant");
 			Statement stmt=con.createStatement();
 			stmt.executeUpdate("update book set book_id = '"+id+"' where book_name = '"+bn+"'");
 			con.close();
@@ -551,7 +551,7 @@ public class Library {
 		try{  
 			Class.forName("com.mysql.jdbc.Driver");  
 			Connection con=DriverManager.getConnection(  
-			"jdbc:mysql://localhost:3306/liberary","root","yash3094"); 
+			"jdbc:mysql://localhost:3306/liberary","root","yashwant");
 			Statement stmt=con.createStatement();
 			stmt.executeUpdate("update book set book_name = '"+nam+"' where book_id = '"+id+"'");
 			con.close();
@@ -562,7 +562,7 @@ public class Library {
 		try{  
 			Class.forName("com.mysql.jdbc.Driver");  
 			Connection con=DriverManager.getConnection(  
-			"jdbc:mysql://localhost:3306/liberary","root","yash3094"); 
+			"jdbc:mysql://localhost:3306/liberary","root","yashwant");
 			Statement stmt=con.createStatement();
 			stmt.executeUpdate("update book set author_name = '"+aut+"' where book_id = '"+id+"'");
 			con.close();
