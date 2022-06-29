@@ -1,22 +1,33 @@
-import java.util.*;
-import java.util.Date;
+import org.apache.ibatis.jdbc.ScriptRunner;
 
-import javax.rmi.CORBA.Util;
-
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.Reader;
 import java.sql.*;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Scanner;
 
 public class Library {
 	public static void main(String[] arg) throws ClassNotFoundException {
-		try{  
-			Class.forName("com.mysql.jdbc.Driver");  
+
+		try{
+
+			/** Uncomment line 21 if you are running this code first time,
+			 * After running it first time, again comment the line 21
+			 *
+			 */
+			//setDatabase();
 			Connection con=DriverManager.getConnection(  
-			"jdbc:mysql://localhost:3306/liberary","root","yash3094");
-			Statement stmt=con.createStatement();  
-			ResultSet rs=stmt.executeQuery("select * from book");  
+			"jdbc:mysql://localhost:3306/liberary","root","yashwant");
+
+			Statement stmt=con.createStatement();
 		}catch(Exception e){ System.out.println(e);}  
 		  
 		
 		Scanner scan = new Scanner(System.in);
+
 		while(true) {
 		System.out.println(" ");
 		System.out.println(" ");
@@ -25,6 +36,7 @@ public class Library {
 		System.out.println("Press 2 to Search Book");
 		System.out.println("Press 3 to view issued book");
 		System.out.println("Press 4 to get list of all book");
+		System.out.println("Press 5 to exit");
 		String bookid,bookname,bookaut;
 		
 		int choice = scan.nextInt();
@@ -42,6 +54,7 @@ public class Library {
 			System.out.println("Press 6 to view list of issued books to particular Student");
 			System.out.println("Press 7 to view list of aLL issued books");
 			System.out.println("Press 8 to Go Back");
+			System.out.println("Press 9 to exit");
 			
 			
 			int ca = scan.nextInt();
@@ -151,6 +164,8 @@ public class Library {
 				break;
 			case 8:
 				break;
+				case 9:
+					System.exit(0);
 			default:
 				System.out.println("NOT VALID CHOICE : ");
 			}
@@ -195,6 +210,10 @@ public class Library {
 		case 4:
 			viewallbook();
 			break;
+
+			case 5:
+				System.exit(0);
+
 		
 		default:
 			System.out.println("NOT A VALID CHOICE!!!");
@@ -208,7 +227,7 @@ public class Library {
 		 try {
 			 Class.forName("com.mysql.jdbc.Driver");  
 				Connection connect=DriverManager.getConnection(  
-				"jdbc:mysql://localhost:3306/liberary","root","yash3094"); 
+				"jdbc:mysql://localhost:3306/liberary","root","yashwant");
 				
 		 Statement statement = connect.createStatement();
 		 ResultSet resultSet = statement.executeQuery("select count(*) from student where student_id = '"+id+"'");
@@ -549,5 +568,28 @@ public class Library {
 			con.close();
 		}catch(Exception e){ System.out.println("Book with given Id does not exists !!");}
 		
+	}
+
+	public static void setDatabase() throws SQLException, FileNotFoundException {
+		makeDatabase();
+
+		Connection con=DriverManager.getConnection(
+				"jdbc:mysql://localhost:3306/liberary","root","yashwant");
+		//Initialize the script runner
+		ScriptRunner sr = new ScriptRunner(con);
+		Reader reader = new BufferedReader(new FileReader("src/main/resources/SQLCOMMANDS.sql"));
+		//Running the script
+		sr.runScript(reader);
+	}
+
+	public static void makeDatabase() throws SQLException, FileNotFoundException {
+
+		Connection con=DriverManager.getConnection(
+				"jdbc:mysql://localhost:3306/","root","yashwant");
+		//Initialize the script runner
+		ScriptRunner sr = new ScriptRunner(con);
+		Reader reader = new BufferedReader(new FileReader("src/main/resources/CreateDatabse.sql"));
+		//Running the script
+		sr.runScript(reader);
 	}
 }
